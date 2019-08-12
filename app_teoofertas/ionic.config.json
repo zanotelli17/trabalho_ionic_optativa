@@ -1,0 +1,8 @@
+{
+  "name": "Teo Oferteas",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}
