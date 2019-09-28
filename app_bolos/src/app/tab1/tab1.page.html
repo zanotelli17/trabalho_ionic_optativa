@@ -1,0 +1,19 @@
+<ion-header aling-title="center">
+    <!-- <img slot="icon-only" src="http://www.ateliedosbolos.com.br/img/index/brigadeiro.png" class="icone"> -->
+</ion-header>
+
+<ion-content>
+    <ion-list lines="none">
+      <ion-item *ngFor="let bolo of bolos" (click)="abrirView(bolo.id)">
+        <ion-avatar slot="start">
+          <img src="{{bolo.imagem}}">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{bolo.tipo}}</h2>
+          <h3>R$ {{bolo.valor}}</h3>
+          <p>{{bolo.descricao}}</p>
+        </ion-label>
+      </ion-item>
+      
+    </ion-list>
+</ion-content>

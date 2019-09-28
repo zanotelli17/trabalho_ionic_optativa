@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+    <ion-title>Carrinho</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="box">
+      <ion-item-divider>
+        <ion-label>
+          Bolo escolhido
+        </ion-label>
+        
+      </ion-item-divider>
+      <ion-item>
+        <ion-input value="{{bolo.tipo}}"></ion-input>
+      </ion-item>
+      <ion-item-divider>
+          <ion-label>
+            Dados da entrega
+          </ion-label>
+          
+        </ion-item-divider>
+      <ion-item>
+        <ion-label position="floating">Bairro</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Rua</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+  </div>
+  <ion-button expand="full" (click)="presentLoading()">Finalizar pedido</ion-button>
+</ion-content>
