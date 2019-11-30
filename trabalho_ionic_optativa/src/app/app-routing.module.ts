@@ -6,8 +6,8 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
-  { path: 'bolo', loadChildren: './bolo/bolo.module#BoloPageModule' },
-  { path: 'carrinho', loadChildren: './carrinho/carrinho.module#CarrinhoPageModule' }
+  { path: 'bolo/:idBolo', loadChildren: './bolo/bolo.module#BoloPageModule' },
+  { path: 'carrinho/:idBolo', loadChildren: './carrinho/carrinho.module#CarrinhoPageModule' }
 ];
 @NgModule({
   imports: [

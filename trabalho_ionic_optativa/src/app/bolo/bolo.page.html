@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="bolo != null">
   <ion-card>
     <img src="{{bolo.imagem}}" />
     <ion-card-header>
@@ -19,5 +19,5 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-button expand="full" [routerLink]="['/carrinho']">Adicionar ao carrinho</ion-button>
+  <ion-button expand="full" (click) ="adicionarCarrinho(bolo.id)">Adicionar ao carrinho</ion-button>
 </ion-content>

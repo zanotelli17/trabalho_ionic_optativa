@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { BolosService } from '../services/bolos.service';
 import { Router } from '@angular/router';
 
@@ -7,18 +7,21 @@ import { Router } from '@angular/router';
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit {
 
-  public bolos: any[] = [];
+  public bolos: any[];
   constructor( public bolosService: BolosService, private router: Router ) {
     
   }
 
   ngOnInit() {
-    this.bolos = this.bolosService.getBolos();
+    this.bolosService.getBolos()
+      .subscribe ( res => {
+        this.bolos = res;
+      });
   }
 
-  abrirView(id:number) {
-    this.router.navigate(['/bolo']);
+  abrirView(idBolo:number) {
+    this.router.navigate(['/bolo',idBolo]);
   }
 }

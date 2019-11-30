@@ -1,40 +1,25 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BolosService {
 
-  bolos: any[] = [
-    {
-      id: 1,
-      tipo: 'Bolo de cenoura',
-      descricao: 'Bolo simples de cenoura',
-      valor: '10.00',
-      imagem: 'assets/img/usuario-1898-9dfefeddb69b421fc18bc216ea20c05b.jpg'
-    },
-    {
-      id: 2,
-      tipo: 'Bolo de cenoura',
-      descricao: 'Bolo simples de cenoura com cobertura de chocolate',
-      valor: '15.00',
-      imagem: 'assets/img/recipe-bolo-cenoura-formigueiro.jpg'
-    },
-    {
-      id: 3,
-      tipo: 'Bolo de cenoura com nozes',
-      descricao: 'Bolo simples de cenoura com nozes',
-      valor: '20.00',
-      imagem: 'assets/img/bolo-de-cenoura-com-nozes.jpg'
-    }
-  ];
-  constructor() { }
+  public destroySubscription$: Subject<void> = new Subject();
 
-  getBolos(){
-    return this.bolos;
+  constructor(
+    private http: HttpClient    
+  ) { }
+
+  getBolos(): Observable<any[] >{
+    return this.http.get<any[]>('http://localhost/api/index.php');
   }
 
-  getBoloId(){
-    return this.bolos[1];
+  getBoloId( idBolo: number ): Observable<any> {
+    let params = new HttpParams().set('idBolo', idBolo.toString());
+    
+    return this.http.get<any>('http://localhost/api/index.php',{ params });
   }
 }

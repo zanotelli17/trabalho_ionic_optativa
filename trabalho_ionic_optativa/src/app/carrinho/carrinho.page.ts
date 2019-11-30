@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BolosService } from '../services/bolos.service';
 import { LoadingController, AlertController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-carrinho',
@@ -9,15 +10,25 @@ import { LoadingController, AlertController } from '@ionic/angular';
 })
 export class CarrinhoPage implements OnInit {
   bolo: any;
+  idBolo: number;
   constructor(
     private boloService: BolosService,
     public loadingController: LoadingController,
-    public alertController: AlertController
+    public alertController: AlertController,
+    private route: ActivatedRoute
   ) { 
-    this.bolo = boloService.getBoloId();
+    
   }
 
   ngOnInit() {
+    this.idBolo = parseInt(this.route.snapshot.paramMap.get('idBolo'));
+    if( this.idBolo != null ) {
+      this.boloService.getBoloId(this.idBolo)
+        .subscribe ( res => {
+          this.bolo = res;
+        })
+    }
+
   }
 
   async presentLoading() {
